@@ -27,6 +27,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @EnableAutoConfiguration
 public class Application {
 
+	/*
 	@Bean
 	CommandLineRunner init(AccountRepository accountRepository,
 			BookmarkRepository bookmarkRepository) {
@@ -42,7 +43,8 @@ public class Application {
 									"http://bookmark.com/2/" + a, "A description"));
 						});
 	}
-
+	*/
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}

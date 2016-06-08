@@ -14,6 +14,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -86,6 +87,7 @@ public class BookmarkRestControllerTest {
     }
 
     @Test
+    @Transactional
     public void userNotFound() throws Exception {
         mockMvc.perform(post("/george/bookmarks/")
                 .content(this.json(new Bookmark()))
@@ -94,6 +96,7 @@ public class BookmarkRestControllerTest {
     }
 
     @Test
+    @Transactional
     public void readSingleBookmark() throws Exception {
         mockMvc.perform(get("/" + userName + "/bookmarks/"
                 + this.bookmarkList.get(0).getId()))
@@ -105,6 +108,7 @@ public class BookmarkRestControllerTest {
     }
 
     @Test
+    @Transactional
     public void readBookmarks() throws Exception {
         mockMvc.perform(get("/" + userName + "/bookmarks"))
                 .andExpect(status().isOk())
@@ -119,6 +123,7 @@ public class BookmarkRestControllerTest {
     }
 
     @Test
+    @Transactional
     public void createBookmark() throws Exception {
         String bookmarkJson = json(new Bookmark(
                 this.account, "http://spring.io", "a bookmark to the best resource for Spring news and information"));
