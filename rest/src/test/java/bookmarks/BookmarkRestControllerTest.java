@@ -78,8 +78,8 @@ public class BookmarkRestControllerTest {
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-        this.bookmarkRepository.deleteAllInBatch();
-        this.accountRepository.deleteAllInBatch();
+//        this.bookmarkRepository.deleteAllInBatch();
+//		  this.accountRepository.deleteAllInBatch();
 
         this.account = accountRepository.save(new Account(userName, "password"));
         this.bookmarkList.add(bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/1/" + userName, "A description")));
@@ -95,7 +95,7 @@ public class BookmarkRestControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    /*
+    
     @Test
     @Transactional
     public void readSingleBookmark() throws Exception {
@@ -133,7 +133,8 @@ public class BookmarkRestControllerTest {
                 .content(bookmarkJson))
                 .andExpect(status().isCreated());
     }
-	*/
+	
+    
     protected String json(Object o) throws IOException {
         MockHttpOutputMessage mockHttpOutputMessage = new MockHttpOutputMessage();
         this.mappingJackson2HttpMessageConverter.write(
