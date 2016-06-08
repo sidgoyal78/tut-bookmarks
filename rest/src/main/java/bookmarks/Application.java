@@ -31,6 +31,7 @@ public class Application {
 	@Bean
 	CommandLineRunner init(AccountRepository accountRepository,
 			BookmarkRepository bookmarkRepository) {
+		System.out.println(" ========== Why mannnnn??? =============");
 		return (evt) -> Arrays.asList(
 				"jhoeller,dsyer,pwebb,ogierke,rwinch,mfisher,mpollack,jlong".split(","))
 				.forEach(
